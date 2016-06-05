@@ -4,10 +4,18 @@ class ConceptsController < ApplicationController
   end
   
   def create
-    #render plain: params[:concept].inspect
+    
     @concept = Concept.new(concept_params)
-    @concept.save
-    redirect_to concepts_show(@concept)
+    if @concept.save
+      flash[:notice] = "Concept was successfully created"
+      redirect_to concept_path(@concept)
+    else
+      render 'new'
+    end
+  end
+  
+  def show
+    @concept = Concept.find(params[:id])
   end
   
   private
