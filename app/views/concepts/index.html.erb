@@ -23,6 +23,7 @@
     <td><%= concept.need %></td>
     <td><%= link_to 'Edit', edit_concept_path(concept) %></td>
     <td><%= link_to 'Show', concept_path(concept) %></td>
+    <td><%= link_to 'Delete', concept_path(concept), method: :delete, data: { confirm: "Are you sure?" } %></td>
   </tr>
   <% end %>
 </table>

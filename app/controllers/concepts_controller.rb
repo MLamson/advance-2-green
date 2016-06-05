@@ -40,6 +40,13 @@ class ConceptsController < ApplicationController
     @concept = Concept.find(params[:id])
   end
   
+  def destroy
+    @concept = Concept.find(params[:id])
+    @concept.destroy
+    flash[:notice] = "Concept was successfully deleted"
+    redirect_to concepts_path
+  end
+  
   private
   def concept_params
     params.require(:concept).permit(:description, :status, :link, :category, :name, :email, :need)
