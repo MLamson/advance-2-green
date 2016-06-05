@@ -1,5 +1,7 @@
 class ConceptsController < ApplicationController
   
+  before_action :set_concept, only: [:edit, :update, :show, :destroy]
+  
   def index
     @concepts = Concept.all
   end
@@ -10,7 +12,6 @@ class ConceptsController < ApplicationController
   end
   
   def edit
-    @concept = Concept.find(params[:id])
   end
   
   def create
@@ -25,7 +26,6 @@ class ConceptsController < ApplicationController
   end
   
   def update
-    @concept = Concept.find(params[:id])
     if @concept.update(concept_params)
       flash[:notice] = "Concept was successfully updated"
       redirect_to concept_path(@concept)
@@ -37,11 +37,9 @@ class ConceptsController < ApplicationController
  
   
   def show
-    @concept = Concept.find(params[:id])
   end
   
   def destroy
-    @concept = Concept.find(params[:id])
     @concept.destroy
     flash[:notice] = "Concept was successfully deleted"
     redirect_to concepts_path
@@ -50,5 +48,9 @@ class ConceptsController < ApplicationController
   private
   def concept_params
     params.require(:concept).permit(:description, :status, :link, :category, :name, :email, :need)
+  end
+  
+  def set_concept
+    @concept = Concept.find(params[:id])
   end
 end
