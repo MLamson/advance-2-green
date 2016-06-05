@@ -1,0 +1,36 @@
+<h1>Create a Concept</h1>
+
+<%= form_for @concept do |c| %>
+  <p>
+    <%= c.label :description %><br>
+    <%= c.text_area :description %>
+  </p>
+  <p>
+    <%= c.label :status %><br>
+    <%= c.text_field :status %>
+  </p>
+  <p>
+    <%= c.label :link%><br>
+    <%= c.text_field :link %>
+  </p>
+  <p>
+    <%= c.label :category %><br>
+    <%= c.text_field :category %>
+  </p>
+  <p>
+    <%= c.label :name %><br>
+    <%= c.text_field :name %>
+  </p>
+  <p>
+    <%= c.label :email %><br>
+    <%= c.text_field :email %>
+  </p>
+  <p>
+    <%= c.label :need %><br>
+    <%= c.text_area :need %>
+  </p>
+  <p>
+    <%= c.submit %><br>
+  </p>
+
+<% end %>
