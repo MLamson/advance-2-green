@@ -1,4 +1,10 @@
 class ConceptsController < ApplicationController
+  
+  def index
+    @concepts = Concept.all
+  end
+  
+  
   def new
     @concept = Concept.new
   end

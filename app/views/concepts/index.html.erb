@@ -1,0 +1,28 @@
+<h1>List of all concepts</h1>
+<p><%= link_to "Create new concept", new_concept_path %></p>
+<table>
+  
+  <tr>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Link</th>
+    <th>Category</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Need</th>
+  </tr>
+  
+  <% @concepts.each do |concept| %>
+  <tr>
+    <td><%= concept.description %></td>
+    <td><%= concept.status %></td>
+    <td><%= concept.link %></td>
+    <td><%= concept.category %></td>
+    <td><%= concept.name %></td>
+    <td><%= concept.email %></td>
+    <td><%= concept.need %></td>
+    <td><%= link_to 'Edit', edit_concept_path(concept) %></td>
+    <td><%= link_to 'Show', concept_path(concept) %></td>
+  </tr>
+  <% end %>
+</table>
