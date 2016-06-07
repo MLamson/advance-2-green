@@ -1,11 +1,4 @@
-<% if @concept.errors.any? %>
-  <h2>The following errors prevented the concept for being created</h2>
-  <ul>
-    <% @concept.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'shared/errors', obj: @concept %>
 
 <div class='row'>
   <div class='col-xs-10 col-xs-offset-1'>

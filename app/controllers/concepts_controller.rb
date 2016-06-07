@@ -18,7 +18,7 @@ class ConceptsController < ApplicationController
     
     @concept = Concept.new(concept_params)
     if @concept.save
-      flash[:notice] = "Concept was successfully created"
+      flash[:success] = "Concept was successfully created"
       redirect_to concept_path(@concept)
     else
       render 'new'
@@ -27,7 +27,7 @@ class ConceptsController < ApplicationController
   
   def update
     if @concept.update(concept_params)
-      flash[:notice] = "Concept was successfully updated"
+      flash[:success] = "Concept was successfully updated"
       redirect_to concept_path(@concept)
     else
       render 'edit'
@@ -41,7 +41,7 @@ class ConceptsController < ApplicationController
   
   def destroy
     @concept.destroy
-    flash[:notice] = "Concept was successfully deleted"
+    flash[:danger] = "Concept was successfully deleted"
     redirect_to concepts_path
   end
   
