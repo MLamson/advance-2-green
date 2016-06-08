@@ -23,7 +23,13 @@
           <%= concept.email %>
         </div>
         <div class="concept-body">
-          <%= concept.need %>
+          <%= concept.need %> 
+        </div>
+        <div class="concept-body">
+          <small>Created by: <%= concept.user.username if concept.user %>, 
+            <%= time_ago_in_words(concept.created_at) %> ago, 
+            last updated: <%= time_ago_in_words(concept.updated_at) %> ago
+          </small>
         </div>
         <div class="concept-actions">
           <%= link_to "Edit this concept", edit_concept_path(concept), class: "btn btn-xs btn-primary" %> |
