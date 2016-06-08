@@ -1,0 +1,38 @@
+<h1 align="center">Sign up for Advance2Green</h1>
+
+<%= render 'shared/errors', obj: @user %>
+
+<div class='row'>
+  <div class='col-xs-10 col-xs-offset-1'>
+  <%= form_for @user do |c| %>
+    <div class='form-group'>
+      <p>
+        <%= c.label :username, "Name" %><br>
+        <%= c.text_field :username, class: "form-control", placeholder: "Enter name", autofocus: true %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :email, "Email" %><br>
+        <%= c.email_field :email, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :password, "Password" %><br>
+        <%= c.password_field :password, class: "form-control" %>
+      </p>
+    </div>
+    
+    <div class='form-group'>
+      <p>
+        <%= c.submit "Sign up", class: 'btn btn-primary btn-lg' %><br>
+      </p>
+    </div>
+  
+  <% end %>
+  <div class="col-xs-4 col-xs-offset-4">
+    <%= link_to "Cancel request and return to concept listing", concepts_path %>
+  </div>
+ </div>
+</div>
