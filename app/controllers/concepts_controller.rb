@@ -15,7 +15,6 @@ class ConceptsController < ApplicationController
   end
   
   def create
-    debugger
     @concept = Concept.new(concept_params)
     @concept.user = User.first
     if @concept.save
