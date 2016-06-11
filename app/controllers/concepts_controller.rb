@@ -3,7 +3,7 @@ class ConceptsController < ApplicationController
   before_action :set_concept, only: [:edit, :update, :show, :destroy]
   
   def index
-    @concepts = Concept.all
+    @concepts = Concept.paginate(page: params[:page], per_page: 4)
   end
   
   
