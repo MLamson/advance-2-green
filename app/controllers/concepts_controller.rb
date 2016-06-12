@@ -18,7 +18,7 @@ class ConceptsController < ApplicationController
   
   def create
     @concept = Concept.new(concept_params)
-    @concept.user = User.first
+    @concept.user = current_user
     if @concept.save
       flash[:success] = "Concept was successfully created"
       redirect_to concept_path(@concept)
