@@ -1,6 +1,8 @@
 class ConceptsController < ApplicationController
   
   before_action :set_concept, only: [:edit, :update, :show, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def index
     @concepts = Concept.paginate(page: params[:page], per_page: 4)
@@ -52,5 +54,12 @@ class ConceptsController < ApplicationController
   
   def set_concept
     @concept = Concept.find(params[:id])
+  end
+  
+  def require_same_user
+    if current_user != @concept.user
+      flash[:danger] = "You can only edit or delete your own concepts"
+      redirect_to root_path
+    end
   end
 end
