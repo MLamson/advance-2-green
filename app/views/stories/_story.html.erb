@@ -1,0 +1,40 @@
+<% obj.each do |story| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="concept-title">
+          <%= link_to story.title, story_path(story) %>
+        </div>
+        <div class="concept-body">
+          <%= story.author %>
+        </div>
+        <div class="concept-body">
+          <%= story.author_bio %>
+        </div>
+        <div class="concept-body">
+          <%= story.email %>
+        </div>
+        <div class="concept-body">
+          <%= story.web %>
+        </div>
+        <div class="concept-body">
+          <%= truncate(story.story, length: 100) %>
+        </div>
+        <div class="concept-body">
+          <small>Created by: <%= story.user.username if story.user %>, 
+            <%= time_ago_in_words(story.created_at) %> ago, 
+            last updated: <%= time_ago_in_words(story.updated_at) %> ago
+          </small>
+        </div>
+          <% if logged_in? && (current_user == story.user || current_user.admin?) %>
+            <div class="concept-actions">
+              <%= link_to "Edit this story", edit_story_path(story), class: "btn btn-xs btn-primary" %> |
+              <%= link_to "Delete this story", story_path(story), method: :delete, 
+                data: { confirm: "Are you sure you want to delete the story?"},
+                class: "btn btn-xs btn-danger" %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,45 @@
+<h2 align="center">Story: <%= @story.title %></h2>
+  <div class="well col-xs-8 col-xs-offset-2">
+    <% if @story.user %>
+      <ul class="listing">
+        <div class="row center">
+          <div class="col-md-4 col-md-offset-4">
+            
+          </div>
+        </div>
+      </ul>
+    <% end %>
+  <h4 class="center description"><strong>Title:</strong></h4>
+  <hr>
+  <%= simple_format(@story.title) %>
+  
+  <h4 class="center"><strong>Author:</strong></h4>
+  <hr>
+  <%= simple_format(@story.author) %>
+  
+  <h4 class="center"><strong>Author Bio:</strong></h4>
+  <hr>
+  <%= simple_format(@story.author_bio) %>
+  
+  <h4 class="center"><strong>Author email:</strong></h4>
+  <hr>
+  <%= simple_format(@story.email) %>
+  
+  <h4 class="center"><strong>Author website:</strong></h4>
+  <hr>
+  <%= simple_format(@story.web) %>
+  
+  <h4 class="center"><strong>Story:</strong></h4>
+  <hr>
+  <%= simple_format(@story.story) %>
+
+  <div class="concept-actions">
+    <% if logged_in? && (current_user == @story.user || current_user.admin?) %>
+      <%= link_to "Edit this story", edit_story_path(@story), class: "btn btn-xs btn-primary" %> |
+      <%= link_to "Delete this story", story_path(@story), method: :delete, 
+        data: { confirm: "Are you sure you want to delete the story?"},
+        class: "btn btn-xs btn-danger" %> |
+    <% end %>
+    <%= link_to "View all stories", stories_path, class: "btn btn-success btn-xs" %>
+  </div>
+</div>

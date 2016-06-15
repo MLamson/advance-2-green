@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   
   resources :concepts
   
+  resources :stories
+  
   get 'signup', to: 'users#new'
   
   resources :users, except: [:new]

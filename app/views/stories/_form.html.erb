@@ -1,0 +1,53 @@
+<%= render 'shared/errors', obj: @story %>
+
+<div class='row'>
+  <div class='col-xs-10 col-xs-offset-1'>
+  <%= form_for @story do |c| %>
+    <div class='form-group'>
+      <p>
+        <%= c.label :title, "Title of your story" %><br>
+        <%= c.text_field :title, class: "form-control", autofocus: true %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :author, "Author" %><br>
+        <%= c.text_field :author, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :author_bio, "Author Bio" %><br>
+        <%= c.text_field :author_bio, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :email, "Author's email" %><br>
+        <%= c.text_field :email, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :web, "Author website" %><br>
+        <%= c.text_field :web, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :story, "Story" %><br>
+        <%= c.text_area :story, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.submit class: 'btn btn-primary btn-lg' %><br>
+      </p>
+    </div>
+  
+  <% end %>
+  <div class="col-xs-4 col-xs-offset-4">
+    <%= link_to "Cancel request and return to concept listing", stories_path %>
+  </div>
+ </div>
+</div>
