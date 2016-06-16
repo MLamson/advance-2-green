@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :concepts, dependent: :destroy
+  has_many :stories, dependent: :destroy
+  has_many :guidances, dependent: :destroy
   before_save { self.email = email.downcase }
   
   validates :username, presence: true, length: { minimum: 3, maximum: 50 }
