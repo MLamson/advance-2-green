@@ -1,0 +1,46 @@
+<% obj.each do |resource| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="concept-title">
+          <%= link_to resource.business_name, resource_path(resource) %>
+        </div>
+        <div class="concept-body">
+          <%= resource.business_name %>
+        </div>
+        <div class="concept-body">
+          <%= truncate(resource.resource, length: 100) %>
+        </div>
+        <div class="concept-body">
+          <%= resource.web %>
+        </div>
+        <div class="concept-body">
+          <%= resource.email %>
+        </div>
+        <div class="concept-body">
+          <%= resource.phone %>
+        </div>
+        <div class="concept-body">
+          <%= resource.street %>
+        </div>
+        <div class="concept-body">
+          <%= resource.city_state_zip %>
+        </div>
+        <div class="concept-body">
+          <small>Created by: <%= resource.user.username if resource.user %>, 
+            <%= time_ago_in_words(resource.created_at) %> ago, 
+            last updated: <%= time_ago_in_words(resource.updated_at) %> ago
+          </small>
+        </div>
+          <% if logged_in? && (current_user == resource.user || current_user.admin?) %>
+            <div class="concept-actions">
+              <%= link_to "Edit this resource", edit_resource_path(resource), class: "btn btn-xs btn-primary" %> |
+              <%= link_to "Delete this resource", resource_path(resource), method: :delete, 
+                data: { confirm: "Are you sure you want to delete the resource?"},
+                class: "btn btn-xs btn-danger" %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

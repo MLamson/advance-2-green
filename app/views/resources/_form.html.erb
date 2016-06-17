@@ -1,0 +1,65 @@
+<%= render 'shared/errors', obj: @resource %>
+
+<div class='row'>
+  <div class='col-xs-10 col-xs-offset-1'>
+  <%= form_for @resource do |c| %>
+    <div class='form-group'>
+      <p>
+        <%= c.label :business_name, "Business name of resource provider:" %><br>
+        <%= c.text_field :business_name, class: "form-control", autofocus: true %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :resource, "Description of resource:" %><br>
+        <%= c.text_area :resource, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :web, "Website:" %><br>
+        <%= c.text_field :web, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :name, "Name:" %><br>
+        <%= c.text_field :name, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :email, "Email" %><br>
+        <%= c.text_field :email, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :phone, "Phone:" %><br>
+        <%= c.text_field :phone, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :street, "Street/PP Box:" %><br>
+        <%= c.text_field :street, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.label :city_state_zip, "City,State,Zip:" %><br>
+        <%= c.text_field :city_state_zip, class: "form-control" %>
+      </p>
+    </div>
+    <div class='form-group'>
+      <p>
+        <%= c.submit class: 'btn btn-primary btn-lg' %><br>
+      </p>
+    </div>
+  
+  <% end %>
+  <div class="col-xs-4 col-xs-offset-4">
+    <%= link_to "Cancel request and return to resource listing", resources_path %>
+  </div>
+ </div>
+</div>

@@ -1,0 +1,53 @@
+<h2 align="center">Resource: <%= @resource.business_name %></h2>
+  <div class="well col-xs-8 col-xs-offset-2">
+    <% if @resource.user %>
+      <ul class="listing">
+        <div class="row center">
+          <div class="col-md-4 col-md-offset-4">
+            
+          </div>
+        </div>
+      </ul>
+    <% end %>
+  <h4 class="center description"><strong>Business name of resource provider:</strong></h4>
+  <hr>
+  <%= simple_format(@resource.business_name) %>
+  
+  <h4 class="center"><strong>Description of resource:</strong></h4>
+  <hr>
+  <%= simple_format(@resource.resource) %>
+  
+  <h4 class="center"><strong>Website:</strong></h4>
+  <hr>
+  <%= simple_format(@resource.web) %>
+  
+  <h4 class="center"><strong>Name:</strong></h4>
+  <hr>
+  <%= simple_format(@resource.name) %>
+  
+  <h4 class="center"><strong>Email:</strong></h4>
+  <hr>
+  <%= simple_format(@resource.email) %>
+  
+  <h4 class="center"><strong>Phone:</strong></h4>
+  <hr>
+  <%= simple_format(@resource.phone) %>
+  
+  <h4 class="center"><strong>Street/PO Box:</strong></h4>
+  <hr>
+  <%= simple_format(@resource.street) %>
+  
+  <h4 class="center"><strong>City,State,Zip:</strong></h4>
+  <hr>
+  <%= simple_format(@resource.city_state_zip) %>
+
+  <div class="concept-actions">
+    <% if logged_in? && (current_user == @resource.user || current_user.admin?) %>
+      <%= link_to "Edit this resource", edit_resource_path(@resource), class: "btn btn-xs btn-primary" %> |
+      <%= link_to "Delete this resource", resource_path(@resource), method: :delete, 
+        data: { confirm: "Are you sure you want to delete the resource?"},
+        class: "btn btn-xs btn-danger" %> |
+    <% end %>
+    <%= link_to "View all stories", resources_path, class: "btn btn-success btn-xs" %>
+  </div>
+</div>
