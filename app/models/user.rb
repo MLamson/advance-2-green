@@ -3,6 +3,13 @@ class User < ActiveRecord::Base
   has_many :stories, dependent: :destroy
   has_many :guidances, dependent: :destroy
   before_save { self.email = email.downcase }
+  before_create :confirmation_token
+  
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
   
   validates :username, presence: true, length: { minimum: 3, maximum: 50 }
   
@@ -11,4 +18,13 @@ class User < ActiveRecord::Base
   length: { maximum: 50 }, format: { with: VALID_EMAIL_REGEX }
   
   has_secure_password
+  
+  private
+  
+  def confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end
+  
 end

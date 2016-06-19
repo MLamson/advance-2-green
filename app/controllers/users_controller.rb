@@ -12,11 +12,24 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserMailer.registration_confirmation(@user).deliver
       session[:user_id] = @user.id
-      flash[:success] = "Welcome to Advance2Green #{@user.username}"
+      flash[:success] = "Welcome to Advance2Green #{@user.username}, Please confirm your email address."
       redirect_to user_path(@user)
     else
       render 'new'
+    end
+  end
+  
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user_params
+      user.email_activate
+      flash[:success] = "Welcome to A2Green! Your account has been confirmed"
+      redirect_to root_path
+    else
+      flash[:error] = "Error: User does not exist"
+      redirect_to root_path
     end
   end
   

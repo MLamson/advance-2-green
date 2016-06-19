@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617060949) do
+ActiveRecord::Schema.define(version: 20160618160009) do
 
   create_table "concepts", force: :cascade do |t|
     t.text     "description"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20160617060949) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.boolean  "admin",           default: false
+    t.boolean  "email_confirmed", default: false
+    t.string   "confirm_token"
   end
 
 end
