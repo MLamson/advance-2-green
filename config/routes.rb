@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   
   root 'pages#home'
   get 'about', to: 'pages#about'
+  get 'terms', to: 'pages#terms'
+  get 'contact', to: 'pages#contact'
+  get 'contribute', to: 'pages#contribute'
   
   resources :concepts
   
