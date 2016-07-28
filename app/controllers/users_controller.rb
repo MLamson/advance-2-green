@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Advance2Green #{@user.username}, Please confirm your email address."
       redirect_to user_path(@user)
     else
+      flash[:error] = "Error: Did not create confirmation email"
       render 'new'
     end
   end
