@@ -18,11 +18,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = {:host => "localhost:3000"}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 2587,
-    domain: 'gmail.com',
-    user_name: 'marklamson11@gmail.com',
-    password: 'dukevike',
+    address: 'smtp.sendgrid.net',
+    port: '587',
+    domain: 'heroku.com',
+    user_name: 'app51794330@heroku.com',
+    password: '5n2tvkmj4643',
     authentication: 'plain',
     enable_starttls_auto: true
   }
